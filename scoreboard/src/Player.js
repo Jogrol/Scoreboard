@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import PlusButton from './PlusButton'
+import MinusButton from './MinusButton'
 import './Player.css';
 
 export default class Player extends Component {
@@ -20,6 +21,7 @@ export default class Player extends Component {
     return (
       <li className="player">
         <p className="name">{ this.props.name }</p>
+        <MinusButton onClick={this.handleOnClick} />
         <p className="score">{ this.props.score }</p>
         <PlusButton onClick={this.handleOnClick} />
       </li> 
