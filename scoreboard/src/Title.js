@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 export default class Title extends Component {
   static propTypes = {
-    content: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired
   }
 
   render() {

@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <Title content="Welcome, what is the score?"/>
+          <Title content=""/>
           <Scorebord/>
         </header>
       </div>

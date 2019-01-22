@@ -1,32 +1,57 @@
 import React, { Component } from 'react'
 import Player from './Player'
+import './Scoreboard.css';
 
-const players = [
-  {
-    id: 1,
-    name: 'Wouter',
-    score: 2
-  },
-  {
-    id: 2,
-    name: 'Mimi',
-    score: 5
-  },
-  {
-    id: 3,
-    name: 'Milan',
-    score: 4
-  }
-]
 
 export default class Scoreboard extends Component {
-  renderPlayer(player) {
-    return <Player
-        key={player.id}
-        name={player.name}
-        score={player.score}
-      
-    />
+    
+    state = {
+        players: [
+          {
+            id: 1,
+            name: 'Wouter',
+            score: 2
+          },
+          {
+            id: 2,
+            name: 'Mimi',
+            score: 5
+          },
+          {
+            id: 3,
+            name: 'Milan',
+            score: 4
+          }
+        ]
+      }
+
+    updatePlayerScore = (id, score) => {
+        const updatedPlayers = this.state.players.map(
+          player => {
+            if (player.id === id) {
+              return {
+                ...player,
+                score
+              }
+            }
+            else {
+              return player
+            }
+          }
+        )
+        this.setState({ players: updatedPlayers })
+      }
+
+  renderPlayer = (player) => {
+    return (<Player
+            id={player.id}
+            key={player.id}
+            name={player.name}
+            score={player.score}
+            updatePlayerScore={this.updatePlayerScore}
+        
+        />
+    )
   }
 
   render() {
@@ -35,7 +60,7 @@ export default class Scoreboard extends Component {
         <h1>Scoreboard</h1>
         <ul>
           {
-            players
+            this.state.players
               .sort((a, b) => b.score - a.score)
               .map(this.renderPlayer)
           }
